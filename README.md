@@ -3,7 +3,7 @@
 http://project-management-symfony.herokuapp.com
 
 #### admin credentials:  
-{admin: admin} 
+
 
 ## functions
 
