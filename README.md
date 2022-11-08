@@ -1,6 +1,6 @@
 # symfony-project-management
 
-http://project-management-symfony.herokuapp.com
+
 
 #### admin credentials:  
 
