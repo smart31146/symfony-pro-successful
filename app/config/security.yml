@@ -1,0 +1,42 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    access_denied_url: app.default
+
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+            cost:      15
+
+    providers:
+        user_db:
+            entity:
+                class: AppBundle:User
+                property: username
+
+    access_control:
+        - { path: ^/workbench/.*, roles: ROLE_USER }
+        - { path: ^/admin/.*, roles: ROLE_ADMIN }
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            form_login:
+                login_path: app.auth.login
+                check_path: app.auth.login
+                username_parameter: "login[username]"
+                password_parameter: "login[password]"
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+            logout:
+                path:   app.auth.logout
+                target: app.auth.login
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER

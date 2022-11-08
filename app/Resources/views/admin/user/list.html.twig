@@ -1,0 +1,48 @@
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+    <div class="container">
+
+        <div class="content">
+            <br>
+            <a class="btn btn-success" href="{{ path('app.admin.user.construct') }}">Create</a>
+            <br>
+            <br>
+            <table class="table table-striped">
+                <thead style="background-color: #4a4a4a; color: white">
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Access Roles</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>
+                            {{ user.username }}
+                        </td>
+                        <td>
+                            {{ user.email }}
+                        </td>
+                        <td>
+                            {% for role in user.getAccessRoles %}
+                                <a href="{{ path('app.admin.role.construct', {'role': role.id}) }}">{{ role }}</a>
+                                <br>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a href="{{ path('app.admin.user.construct', {'user': user.id}) }}">Edit</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('app.admin.user.delete', {'user': user.id}) }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+{% endblock %}

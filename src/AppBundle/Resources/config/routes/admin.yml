@@ -1,0 +1,44 @@
+app.admin.index:
+    path:     /
+    defaults: { _controller: AppBundle:Admin:index }
+
+
+app.admin.user.list:
+    path:     /user/list
+    defaults: { _controller: AppBundle:Admin:listUser }
+    
+app.admin.user.construct:
+    path:     /user/construct/{user}
+    defaults: { _controller: AppBundle:Admin:constructUser, user: null }
+
+app.admin.user.delete:
+    path:     /user/delete/{user}
+    defaults: { _controller: AppBundle:Admin:deleteUser }
+
+
+
+app.admin.project.list:
+    path:     /project/list
+    defaults: { _controller: AppBundle:Admin:listProject }
+    
+app.admin.project.construct:
+    path:     /project/construct/{project}
+    defaults: { _controller: AppBundle:Admin:constructProject, project: null }
+
+app.admin.project.delete:
+    path:     /project/delete/{project}
+    defaults: { _controller: AppBundle:Admin:deleteProject }
+
+
+
+app.admin.role.list:
+    path:     /role/list
+    defaults: { _controller: AppBundle:Admin:listRole }
+    
+app.admin.role.construct:
+    path:     /role/construct/{role}
+    defaults: { _controller: AppBundle:Admin:constructRole, role: null }
+
+app.admin.role.delete:
+    path:     /role/delete/{role}
+    defaults: { _controller: AppBundle:Admin:deleteRole }

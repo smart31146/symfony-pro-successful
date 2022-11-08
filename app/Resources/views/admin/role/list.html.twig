@@ -1,0 +1,54 @@
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="content">
+            <br>
+            <a class="btn btn-success" href="{{ path('app.admin.role.construct') }}">Create</a>
+            <br>
+            <br>
+            <table class="table table-striped">
+                <thead style="background-color: #4a4a4a; color: white">
+                    <tr>
+                       <th scope="col">Name</th>
+                       <th scope="col">Owners</th>
+                       <th scope="col">Access</th>
+                       <th scope="col">Edit</th>
+                       <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for role in roles %}
+                    <tr>
+                        <td>
+                            {{ role.name }}
+                        </td>
+                        <td>
+                            {% for user in role.users %}
+                                <a href="{{ path('app.admin.user.construct', {'user': user.id}) }}">{{ user.username }}</a>
+                                <br>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for access in role.accesses %}
+                                <b>{{ ('access.type.' ~ access.type)|trans({}, 'admin') }} : </b>
+                                {% for project in access.projects %}
+                                    <br>
+                                    <a href="{{ path('app.admin.project.construct', {'project': project.id}) }}">{{ project.name }}</a>
+                                {% endfor %}
+                                <br>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a href="{{ path('app.admin.role.construct', {'role': role.id}) }}">Edit</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('app.admin.role.delete', {'role': role.id}) }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+{% endblock %}

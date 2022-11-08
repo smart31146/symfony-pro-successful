@@ -1,0 +1,54 @@
+{% extends 'workbench/base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="content">
+            <h1>Your projects</h1>
+            <br>
+            <table class="table table-striped">
+                <thead style="background-color: #4a4a4a; color: white">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Updated</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for project in projects %}
+                    {% if admin or project in projectsByAccess[constant('AppBundle\\Entity\\Access::READ')] %}
+                    <tr>
+                        <td>
+                            {{ project.name }}
+                        </td>
+                        <td>
+                            {{ project.content }}
+                        </td>
+                        <td>
+                            {{ project.createdAt|date('Y-m-d H:i:s') }}
+                        </td>
+                        <td>
+                            {{ project.updatedAt|date('Y-m-d H:i:s') }}
+                        </td>
+                        <td>
+                            {% if admin or project in projectsByAccess[constant('AppBundle\\Entity\\Access::WRITE')] %}
+                            <a href="{{ path('app.workbench.project.construct', {'project': project.id}) }}">Edit</a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if admin or project in projectsByAccess[constant('AppBundle\\Entity\\Access::DELETE')] %}
+                            <a href="{{ path('app.workbench.project.delete', {'project': project.id}) }}">Delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+{% endblock %}

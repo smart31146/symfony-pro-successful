@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+    <div class="container">
+
+        <div class="content">
+            <h1>Admin Panel</h1>
+            <br>
+            <h4>Statistics:</h4>
+            <table class="table table-striped">
+                <tbody>
+                    {% for name, entities in params %}
+                    <tr>
+                        <td>
+                            {{ name }}
+                        </td>
+                        <td>
+                            {{ entities|length }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+{% endblock %}

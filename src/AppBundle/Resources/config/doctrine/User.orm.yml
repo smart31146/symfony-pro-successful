@@ -1,0 +1,30 @@
+AppBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: 255
+            unique: true
+        email:
+            type: string
+            length: 255
+            unique: true
+        password:
+            type: string
+            length: 255
+        securityRoles:
+            column: security_roles
+            type: array
+    manyToMany:
+        accessRoles:
+            targetEntity: AppBundle\Entity\Role
+            inversedBy: users
+    lifecycleCallbacks: {  }

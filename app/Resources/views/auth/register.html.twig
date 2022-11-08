@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-login">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <a href="{{ path('app.auth.login') }}" id="login-form-link">Login</a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <span id="register-form-link" class="active">Register</span>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="register-form">
+                                        {{ form_start(form) }}
+                                        <div class="form-group">
+                                            {{ form_label(form.username) }}
+                                            {{ form_widget(form.username) }}
+                                            <div class="alert-danger" style="border-radius: 5px">
+                                                {{ form_errors(form.username) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_label(form.email) }}
+                                            {{ form_widget(form.email) }}
+                                            <div class="alert-danger" style="border-radius: 5px">
+                                                {{ form_errors(form.email) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_label(form.password.first) }}
+                                            {{ form_widget(form.password.first) }}
+                                            <div class="alert-danger" style="border-radius: 5px">
+                                                {{ form_errors(form.password.first) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_label(form.password.second) }}
+                                            {{ form_widget(form.password.second) }}
+                                            <div class="alert-danger" style="border-radius: 5px">
+                                                {{ form_errors(form.password.second) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3">
+                                                    <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{ form_end(form) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/app/css/auth.css') }}" rel="stylesheet" id="bootstrap-css">
+{% endblock %}

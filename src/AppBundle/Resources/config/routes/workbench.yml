@@ -1,0 +1,11 @@
+app.workbench.index:
+    path:     /
+    defaults: { _controller: AppBundle:Workbench:index }
+
+app.workbench.project.construct:
+    path:     /construct/{project}
+    defaults: { _controller: AppBundle:Workbench:constructProject }
+
+app.workbench.project.delete:
+    path:     /delete/{project}
+    defaults: { _controller: AppBundle:Workbench:deleteProject }

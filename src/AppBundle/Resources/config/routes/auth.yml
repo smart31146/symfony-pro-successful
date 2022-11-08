@@ -1,0 +1,10 @@
+app.auth.login:
+    path:     /login
+    defaults: { _controller: AppBundle:Auth:login }
+
+app.auth.register:
+    path:     /register
+    defaults: { _controller: AppBundle:Auth:register }
+
+app.auth.logout:
+    path: /logout

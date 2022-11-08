@@ -1,0 +1,25 @@
+AppBundle\Entity\Role:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\RoleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    oneToMany:
+        accesses:
+            targetEntity: AppBundle\Entity\Access
+            mappedBy: role
+            cascade: ['all']
+    manyToMany:
+        users:
+            targetEntity: AppBundle\Entity\User
+            mappedBy: accessRoles
+            cascade: ['persist']
+    lifecycleCallbacks: {  }

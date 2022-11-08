@@ -1,0 +1,4 @@
+services:
+    AppBundle\EventListener\RemoveListener:
+        tags:
+            - { name: doctrine.event_listener, event: preRemove }

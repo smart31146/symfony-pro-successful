@@ -1,0 +1,36 @@
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+    <div class="container">
+
+        <div class="content">
+            <br>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="register-form">
+                        {{ form_start(form) }}
+                        {% for value in form %}
+                            {% if value.vars.block_prefixes.1 != "hidden" %}
+                                <div class="form-group">
+                                    {{ form_label(value) }}
+                                    {{ form_widget(value) }}
+                                    <div class="alert-danger" style="border-radius: 5px">
+                                        {{ form_errors(value) }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    <input type="submit" tabindex="4" class="form-control btn btn-success" value="Save">
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

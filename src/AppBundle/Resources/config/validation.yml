@@ -1,0 +1,13 @@
+AppBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: email
+            message: 'Email is not unique!'
+            groups: [registration]
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: username
+            message: 'Username is not unique!'
+            groups: [registration]
+    properties:
+        email:
+            - Email: ~

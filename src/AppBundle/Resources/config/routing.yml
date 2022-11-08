@@ -1,0 +1,15 @@
+app.default:
+    path: /
+    defaults: { _controller: AppBundle:Default:index }
+
+app.auth:
+    resource: 'routes/auth.yml'
+    prefix:   /
+
+app.workbench:
+    resource: 'routes/workbench.yml'
+    prefix:   workbench
+
+app.admin:
+    resource: 'routes/admin.yml'
+    prefix:   admin

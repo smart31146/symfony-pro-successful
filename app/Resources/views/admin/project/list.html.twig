@@ -1,0 +1,48 @@
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="content">
+            <br>
+            <a class="btn btn-success" href="{{ path('app.admin.project.construct') }}">Create</a>
+            <br>
+            <br>
+            <table class="table table-striped">
+                <thead style="background-color: #4a4a4a; color: white">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Content</th>
+                        <th scope="col">Created</th>
+                        <th scope="col">Updated</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for project in projects %}
+                    <tr>
+                        <td>
+                            {{ project.name }}
+                        </td>
+                        <td>
+                            {{ project.content }}
+                        </td>
+                        <td>
+                            {{ project.createdAt|date('Y-m-d H:i:s') }}
+                        </td>
+                        <td>
+                            {{ project.updatedAt|date('Y-m-d H:i:s') }}
+                        </td>
+                        <td>
+                            <a href="{{ path('app.admin.project.construct', {'project': project.id}) }}">Edit</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('app.admin.project.delete', {'project': project.id}) }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+{% endblock %}
